@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './PasswordModal.css'; // Ensure you have a CSS file for styling the modal
+import './PasswordModal.css';
 
 const PasswordModal = ({ user, onClose, onPasswordSubmit }) => {
   const [password, setPassword] = useState('');

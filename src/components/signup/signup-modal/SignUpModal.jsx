@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { getDatabase, ref, set } from 'firebase/database';
 import bcrypt from 'bcryptjs';
-import './SignUpModal.css'; // Ensure you have a CSS file for styling the modal
+import './SignUpModal.css';
 
 const SignUpModal = ({ user, onClose, onSignUp }) => {
   const [password, setPassword] = useState('');
@@ -19,10 +19,10 @@ const SignUpModal = ({ user, onClose, onSignUp }) => {
         username: user.displayName,
         email: user.email,
         profile_picture: user.photoURL,
-        password: hashedPassword // Store the hashed password
+        password: hashedPassword 
       });
       console.log('User added to the database');
-      onSignUp(user);  // Call onSignUp to notify parent component
+      onSignUp(user); 
       onClose();
     } catch (error) {
       console.error('Error during sign-up: ', error);
