@@ -2,20 +2,26 @@ import React, { useState } from 'react';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '../../services/database/firebase';
 import { getDatabase, ref, get } from 'firebase/database';
+import AuthModal from '../auth-modal/AuthModal';
 import bcrypt from 'bcryptjs';
-import PasswordModal from '../password-modal/PasswordModal';
-import SignUpModal from '../signup/signup-modal/SignUpModal';
 
 const LoginBtn = ({ onLogin }) => {
-  const [showSignUpModal, setShowSignUpModal] = useState(false);
-  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [modalType, setModalType] = useState(null);
   const [user, setUser] = useState(null);
+  const [authError, setAuthError] = useState('');
+  const [loginAttempts, setLoginAttempts] = useState(0);
+  const [lockUntil, setLockUntil] = useState(null);
 
   const handleLogin = async () => {
+    if (lockUntil && new Date() < lockUntil) {
+      setAuthError(`Account locked. Try again after ${lockUntil.toLocaleTimeString()}.`);
+      return;
+    }
+
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
-      console.log('User signed in: ', user);
+      setUser(user);
 
       // Check if user exists in the database
       const db = getDatabase();
@@ -23,26 +29,26 @@ const LoginBtn = ({ onLogin }) => {
       const userSnapshot = await get(userRef);
 
       if (userSnapshot.exists()) {
-        console.log('User exists in the database:', userSnapshot.val());
-        setUser(user);
-        setShowPasswordModal(true);
+        setModalType('password');
       } else {
-        console.log('User does not exist, showing sign-up modal');
-        setUser(user);
-        setShowSignUpModal(true);
+        setModalType('nonExistent');
       }
     } catch (error) {
-      console.error('Error during sign-in with Google: ', error);
+      console.error('Error during sign-in with Google:', error);
+      setAuthError('Authentication failed. Please try again.');
     }
   };
 
-  const handleSignUp = (user) => {
-    onLogin(user);
-    setShowSignUpModal(false);
+  const handleClose = () => {
+    setModalType(null);
+  };
+
+  const handleRegister = (user, type) => {
+    setUser(user);
+    setModalType(type);
   };
 
   const handlePasswordSubmit = async (password) => {
-    // Verify password
     const db = getDatabase();
     const userRef = ref(db, 'users/' + user.uid);
     const userSnapshot = await get(userRef);
@@ -50,29 +56,37 @@ const LoginBtn = ({ onLogin }) => {
 
     const isPasswordCorrect = bcrypt.compareSync(password, userData.password);
 
+    // Check password
     if (isPasswordCorrect) {
       onLogin(user);
+      setLoginAttempts(0);
+      handleClose();
     } else {
-      alert('Incorrect password. Please try again.');
+      setLoginAttempts((prev) => prev + 1);
+      if (loginAttempts >= 2) {
+        setLockUntil(new Date(new Date().getTime() + 60 * 60 * 1000));
+        setAuthError('Account locked due to too many failed attempts. Try again in 1 hour.');
+        console.error('Account locked due to too many failed attempts. Try again in 1 hour.');
+      } else {
+        const errorMsg = `Incorrect password. ${3 - loginAttempts - 1} attempts left.`;
+        console.error(errorMsg);
+        setAuthError(errorMsg);
+      }
+      throw new Error(authError);
     }
-    setShowPasswordModal(false);
   };
 
   return (
     <>
       <button onClick={handleLogin}>Sign in with Google</button>
-      {showSignUpModal && (
-        <SignUpModal 
+      {authError && <p className="error">{authError}</p>}
+      {modalType && (
+        <AuthModal 
           user={user} 
-          onClose={() => setShowSignUpModal(false)} 
-          onSignUp={handleSignUp} 
-        />
-      )}
-      {showPasswordModal && (
-        <PasswordModal 
-          user={user} 
-          onClose={() => setShowPasswordModal(false)} 
-          onPasswordSubmit={handlePasswordSubmit} 
+          type={modalType} 
+          onClose={handleClose} 
+          onLogin={handleRegister} 
+          onPasswordSubmit={handlePasswordSubmit}
         />
       )}
     </>

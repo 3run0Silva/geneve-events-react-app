@@ -1,4 +1,4 @@
-.signup-modal {
+.auth-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,10 +10,14 @@
   align-items: center;
 }
 
-.signup-modal-content {
+.auth-modal-content {
   background: white;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
+.error {
+  color: red;
+  margin-top: 10px;
+}
