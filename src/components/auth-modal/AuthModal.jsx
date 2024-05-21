@@ -10,11 +10,11 @@ const AuthModal = ({ user, type, onClose, onLogin, onPasswordSubmit, onExistingA
   const handlePasswordSubmit = async () => {
     try {
       await onPasswordSubmit(password);
-      setPassword('');
+      setPassword(''); // Clear password field on success
     } catch (err) {
       console.error('Error during password submission:', err);
       setError(err.message);
-      setPassword(''); 
+      setPassword(''); // Clear password field on error
     }
   };
 
@@ -113,4 +113,5 @@ const AuthModal = ({ user, type, onClose, onLogin, onPasswordSubmit, onExistingA
 };
 
 export default AuthModal;
+
 

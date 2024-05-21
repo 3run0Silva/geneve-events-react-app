@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DropdownMenu from './components/doprdawn/DropdownMenu';
+import Navbar from './components/navbar/Navbar';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -16,12 +16,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>My App</h1>
-      <DropdownMenu isLoggedIn={!!user} onLogin={handleLogin} onLogout={handleLogout} />
+      <Navbar isLoggedIn={!!user} onLogin={handleLogin} onLogout={handleLogout} />
       {user ? <p>Welcome, {user.displayName}</p> : <p>Please log in to access more features</p>}
     </div>
   );
 }
 
 export default App;
+
 
