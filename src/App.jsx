@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import LoginBtn from './components/login/LoginBtn';
-import SignUpBtn from './components/signup/SignUpBtn';
+import DropdownMenu from './components/doprdawn/DropdownMenu';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -10,19 +9,19 @@ function App() {
     console.log('User logged in: ', user);
   };
 
+  const handleLogout = () => {
+    setUser(null);
+    console.log('User logged out');
+  };
+
   return (
     <div className="App">
       <h1>My App</h1>
-      {user ? (
-        <h1>Logged in</h1>
-      ) : (
-        <>
-          <LoginBtn onLogin={handleLogin} />
-          <SignUpBtn onSignUp={handleLogin} />
-        </>
-      )}
+      <DropdownMenu isLoggedIn={!!user} onLogin={handleLogin} onLogout={handleLogout} />
+      {user ? <p>Welcome, {user.displayName}</p> : <p>Please log in to access more features</p>}
     </div>
   );
 }
 
 export default App;
+
