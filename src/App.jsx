@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './components/navbar/Navbar';
 
+
 function App() {
   const [user, setUser] = useState(null);
 
@@ -16,12 +17,12 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar isLoggedIn={!!user} onLogin={handleLogin} onLogout={handleLogout} />
-      {user ? <p>Welcome, {user.displayName}</p> : <p>Please log in to access more features</p>}
+      <Navbar isLoggedIn={!!user} user={user} onLogin={handleLogin} onLogout={handleLogout} />
+      <div className="content">
+        <h2>Categories</h2>
+      </div>
     </div>
   );
 }
 
 export default App;
-
-

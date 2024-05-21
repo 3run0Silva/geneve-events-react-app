@@ -3,7 +3,7 @@ import LoginBtn from '../login/LoginBtn';
 import SignUpBtn from '../signup/SignUpBtn';
 import './DropdownMenu.css';
 
-const DropdownMenu = ({ isLoggedIn, onLogin, onLogout }) => {
+const DropdownMenu = ({ isLoggedIn, user, onLogin, onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [alignLeft, setAlignLeft] = useState(false);
   const dropdownRef = useRef(null);
@@ -22,26 +22,34 @@ const DropdownMenu = ({ isLoggedIn, onLogin, onLogout }) => {
 
   return (
     <div className="dropdown-menu">
-      <button onClick={toggleMenu}>Menu</button>
-      {isOpen && (
-        <div
-          className={`dropdown-content ${alignLeft ? 'left-aligned' : ''}`}
-          ref={dropdownRef}
-        >
-          {isLoggedIn ? (
-            <>
-              <button>Profile</button>
-              <button>Settings</button>
-              <button onClick={onLogout}>Logout</button>
-            </>
-          ) : (
-            <>
-              <LoginBtn onLogin={onLogin} />
-              <SignUpBtn onSignUp={onLogin} />
-            </>
-          )}
-        </div>
-      )}
+      <button onClick={toggleMenu}>
+        {isLoggedIn && user ? (
+          <>
+            <img src={user.photoURL} alt="avatar" className="avatar" />
+            {user.displayName}
+          </>
+        ) : (
+          'User'
+        )}
+        <span style={{ marginLeft: '8px' }}>▼</span>
+      </button>
+      <div
+        className={`dropdown-content ${isOpen ? 'show' : ''} ${alignLeft ? 'left-aligned' : ''}`}
+        ref={dropdownRef}
+      >
+        {isLoggedIn ? (
+          <>
+            <button>Profile</button>
+            <button>Settings</button>
+            <button onClick={onLogout}>Logout</button>
+          </>
+        ) : (
+          <>
+            <LoginBtn onLogin={onLogin} />
+            <SignUpBtn onSignUp={onLogin} />
+          </>
+        )}
+      </div>
     </div>
   );
 };
