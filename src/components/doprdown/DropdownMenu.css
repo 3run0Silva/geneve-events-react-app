@@ -24,20 +24,19 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: white;
+  background: linear-gradient(145deg, #3c3c3c, #2b2b2b);
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   right: 0;
-  border-radius: 5px;
+  border-radius: 8px;
   overflow: hidden;
 }
 
 .dropdown-content.left-aligned {
   left: 0;
   right: auto;
-  -moz-box-shadow: 0px 1px 13px 0px rgba(0,0,0,0.75);
-  box-shadow: 0px 1px 13px 0px rgba(0,0,0,0.75);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .dropdown-content.show {
@@ -45,7 +44,7 @@
 }
 
 .dropdown-content button {
-  color: black;
+  color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -58,5 +57,6 @@
 }
 
 .dropdown-content button:hover {
-  background-color: #f1f1f1;
+  background: #444;
 }
+

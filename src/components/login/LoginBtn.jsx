@@ -78,7 +78,7 @@ const LoginBtn = ({ onLogin }) => {
 
   return (
     <>
-      <button onClick={handleLogin}>Sign in with Google</button>
+      <button onClick={handleLogin}>Login</button>
       {authError && <p className="error">{authError}</p>}
       {modalType && (
         <AuthModal 

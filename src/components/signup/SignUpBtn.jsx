@@ -83,7 +83,7 @@ const SignUpBtn = ({ onSignUp }) => {
 
   return (
     <>
-      <button onClick={handleSignUp}>Sign Up with Google</button>
+      <button onClick={handleSignUp}>Register</button>
       {authError && <p className="error">{authError}</p>}
       {modalType && (
         <AuthModal 

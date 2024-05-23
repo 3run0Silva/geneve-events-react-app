@@ -30,7 +30,7 @@ const DropdownMenu = ({ isLoggedIn, user, onLogin, onLogout }) => {
             {console.log(user.photoURL)}
           </>
         ) : (
-          'User'
+          'Account'
         )}
         <span style={{ marginLeft: '8px' }}>▼</span>
       </button>
