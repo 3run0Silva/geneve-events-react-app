@@ -1,3 +1,8 @@
-.categories-page {
-  background-color: grey;
+.categories-title {
+  margin-top:1em;
+  text-align: center;
+  font-size: 4rem;
+  background: linear-gradient(to right, #FFEC00 30%, #FF0000 85%);
+  background-clip: text;
+  color: transparent;
 }

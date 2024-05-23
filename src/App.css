@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
-  background: linear-gradient(to right, #696968, #bbbaba);
+
+  background: linear-gradient(to right, #1E1E1E, #737373);
 }

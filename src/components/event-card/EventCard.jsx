@@ -1,0 +1,7 @@
+const EventCard = () => {
+  return (
+    <>
+    
+    </>
+  )
+}

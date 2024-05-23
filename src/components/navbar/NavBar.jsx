@@ -12,4 +12,3 @@ const Navbar = ({ isLoggedIn, user, onLogin, onLogout }) => {
 };
 
 export default Navbar;
-
