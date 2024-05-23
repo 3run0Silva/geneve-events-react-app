@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './components/navbar/Navbar';
+import Categories from './pages/categories-page/Categories';
+import './App.css'
 
 
 function App() {
@@ -19,7 +21,7 @@ function App() {
     <div className="App">
       <Navbar isLoggedIn={!!user} user={user} onLogin={handleLogin} onLogout={handleLogout} />
       <div className="content">
-        <h2>Categories</h2>
+        <Categories />
       </div>
     </div>
   );

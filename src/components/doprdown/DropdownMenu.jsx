@@ -27,6 +27,7 @@ const DropdownMenu = ({ isLoggedIn, user, onLogin, onLogout }) => {
           <>
             <img src={user.photoURL} alt="avatar" className="avatar" />
             {user.displayName}
+            {console.log(user.photoURL)}
           </>
         ) : (
           'User'
