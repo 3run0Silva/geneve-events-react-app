@@ -1,5 +1,6 @@
 .categories-title {
   margin-top:1em;
+  margin-bottom: 1em;
   text-align: center;
   font-size: 4rem;
   background: linear-gradient(to right, #FFEC00 30%, #FF0000 85%);

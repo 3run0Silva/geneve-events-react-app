@@ -1,0 +1,43 @@
+.event-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  background: #2b2b2b;
+}
+
+.event-card {
+  background: linear-gradient(145deg, #3c3c3c, #2b2b2b);
+  border: 1px solid #555;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 90%;
+  max-width: 300px;
+  color: #fff;
+  text-align: center;
+}
+
+.event-card h2 {
+  margin-top: 0;
+  color: #ffa500;
+}
+
+.event-card .event-date,
+.event-card .event-location,
+.event-card .event-description {
+  color: #ddd;
+}
+
+.event-card .event-date {
+  font-weight: bold;
+}
+
+.event-card .event-location {
+  font-style: italic;
+}
+
+.event-card .event-img {
+  width: inherit;
+}

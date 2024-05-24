@@ -1,4 +1,5 @@
-const API_URL = 'hhttps://geneva-events-api.onrender.com';
+// const API_URL = 'https://geneva-events-api.onrender.com';
+const API_URL = 'http://192.168.10.30:8080'
 
 // Fetch all events
 const fetchEvents = async () => {
