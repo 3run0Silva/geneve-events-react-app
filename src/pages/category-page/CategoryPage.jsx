@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { fetchEventsByTag } from '../../services/api/api';
 import './CategoryPage.css';
 
 const CategoryPage = () => {
   const { tag } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const displayTag = location.state?.displayTag || tag;
   const cornerColor = location.state?.cornerColor || 'rgba(255, 0, 0, 0.5)';
@@ -27,6 +28,10 @@ const CategoryPage = () => {
     getEvents();
   }, [tag, location.state]);
 
+  const handleCardClick = (event) => {
+    navigate(`/event/${event.id}`, { state: { event } });
+  };
+
   return (
     <>
       <h1 className='category-title'>{displayTag} Events</h1>
@@ -39,6 +44,7 @@ const CategoryPage = () => {
               key={index}
               className="event-card"
               style={{ '--corner-color': getColorFromGradient(cornerColor) }}
+              onClick={() => handleCardClick(event)}
             >
               <img className='event-img' src={event.img} alt={event.title} />
               <div className="corner-tag" style={{ background: cornerColor }}></div>
