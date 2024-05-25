@@ -12,20 +12,20 @@ const HomePage = () => {
     setEvents(data.categories);
   }, []);
 
-  const handleCardClick = async (apiTag, displayTag) => {
+  const handleCardClick = async (apiTag, displayTag, cornerColor) => {
     if (apiTag === 'all') {
       try {
         const allEvents = await fetchEvents();
         if (allEvents.length === 0) {
           alert('There are currently no events available. Please try again later.');
         } else {
-          navigate(`/category/${apiTag}`, { state: { events: allEvents, displayTag } });
+          navigate(`/category/${apiTag}`, { state: { events: allEvents, displayTag, cornerColor } });
         }
       } catch (error) {
         console.error('Failed to fetch all events:', error);
       }
     } else {
-      navigate(`/category/${apiTag}`, { state: { displayTag } });
+      navigate(`/category/${apiTag}`, { state: { displayTag, cornerColor } });
     }
   };
 
@@ -34,7 +34,7 @@ const HomePage = () => {
       <h1 className='home-title'>Categories</h1>
       <div className="event-cards">
         {events.map((event, index) => (
-          <div key={index} className="event-card" onClick={() => handleCardClick(event.apiTag, event.displayTag)}>
+          <div key={index} className="event-card" onClick={() => handleCardClick(event.apiTag, event.displayTag, event.cornerColor)}>
             <img className='event-img' src={event.img} alt={event.displayTag} />
             <div className="corner-tag" style={{ background: event.cornerColor }}></div>
             <h2 style={{ color: getColorFromGradient(event.cornerColor) }}>{event.displayTag}</h2>

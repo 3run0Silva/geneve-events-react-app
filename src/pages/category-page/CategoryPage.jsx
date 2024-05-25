@@ -8,6 +8,7 @@ const CategoryPage = () => {
   const location = useLocation();
   const [events, setEvents] = useState([]);
   const displayTag = location.state?.displayTag || tag;
+  const cornerColor = location.state?.cornerColor || 'rgba(255, 0, 0, 0.5)';
 
   useEffect(() => {
     const getEvents = async () => {
@@ -34,10 +35,14 @@ const CategoryPage = () => {
       ) : (
         <div className="event-cards">
           {events.map((event, index) => (
-            <div key={index} className="event-card">
+            <div
+              key={index}
+              className="event-card"
+              style={{ '--corner-color': getColorFromGradient(cornerColor) }}
+            >
               <img className='event-img' src={event.img} alt={event.title} />
-              <div className="corner-tag" style={{ background: 'rgba(255, 0, 0, 0.5)' }}></div>
-              <h2 style={{ background: 'rgba(255, 0, 0, 0.5)' }}>{event.title}</h2>
+              <div className="corner-tag" style={{ background: cornerColor }}></div>
+              <h2>{event.title}</h2>
               <p className="event-date">{event.date}</p>
             </div>
           ))}
@@ -45,6 +50,12 @@ const CategoryPage = () => {
       )}
     </>
   );
+};
+
+const getColorFromGradient = (gradient) => {
+  // Extract the first color from the gradient string
+  const colors = gradient.match(/#([0-9a-f]{6}|[0-9a-f]{3})/gi);
+  return colors ? colors[0] : '#fff';
 };
 
 export default CategoryPage;

@@ -18,7 +18,7 @@
 .event-cards {
   display: grid;
   grid-template-columns: repeat(5, 220px); /* Set exactly 5 columns with fixed width */
-  gap: 40px; /* Space between cards */
+  gap: 70px; /* Space between cards */
   justify-content: center;
   padding: 20px;
   background: transparent; /* Remove background */
@@ -34,7 +34,7 @@
   width: 220px; /* Fixed width to maintain shape */
   height: 320px; /* Fixed height to maintain shape */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  color: #fff;
+  color: var(--corner-color); /* Use the CSS variable for initial text color */
   transition: all 0.3s ease;
 }
 
@@ -60,11 +60,11 @@
   text-align: center;
   width: 100%;
   z-index: 1;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* More pronounced shadow */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 1.5); /* More pronounced shadow */
   background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
   padding: 5px; /* Padding for the background */
   border-radius: 5px; /* Rounded corners for the background */
-  color: currentColor;
+  color: inherit; /* Use inherited color */
 }
 
 .event-card:hover h2 {
@@ -78,7 +78,7 @@
   right: 0;
   width: 40px;
   height: 40px;
-  background: linear-gradient(to right, #FFEC00, #FF0000); /* Default value, overridden by inline style */
+  background: inherit; /* Use the inherited color from inline style */
   clip-path: polygon(100% 0, 0 100%, 100% 100%);
   transition: all 0.3s ease;
 }
@@ -86,7 +86,6 @@
 .event-card:hover .corner-tag {
   width: 100%;
   height: 100%;
-  background: rgba(255, 0, 0, 0.5); /* This will be overridden by inline style */
   clip-path: none;
   opacity: 0.5; /* Adjust this value to control the translucency */
 }
