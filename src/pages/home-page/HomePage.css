@@ -1,6 +1,6 @@
 .home-title {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
   text-align: center;
   font-size: 4rem;
   background: linear-gradient(to right, #FFEC00 30%, #FF0000 85%);
@@ -11,7 +11,7 @@
 .event-cards {
   display: grid;
   grid-template-columns: repeat(5, 220px); /* Set exactly 5 columns with fixed width */
-  gap: 70px; /* Space between cards */
+  gap: 40px; /* Space between cards */
   justify-content: center;
   padding: 20px;
   background: transparent; /* Remove background */
@@ -49,18 +49,20 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, background 0.3s ease;
   text-align: center;
   width: 100%;
   z-index: 1;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 1.5); /* More pronounced shadow */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* More pronounced shadow */
   background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
   padding: 5px; /* Padding for the background */
   border-radius: 5px; /* Rounded corners for the background */
+  color: inherit; /* Ensure it inherits the initial color */
 }
 
 .event-card:hover h2 {
-  color: #fff !important;
+  color: #fff; /* White text on hover */
+  background: rgba(0, 0, 0, 0.5); /* Keep the background semi-transparent */
 }
 
 .corner-tag {
@@ -80,4 +82,11 @@
   background: rgba(255, 0, 0, 0.5); /* This will be overridden by inline style */
   clip-path: none;
   opacity: 0.5; /* Adjust this value to control the translucency */
+}
+
+.event-date,
+.event-location,
+.event-description {
+  margin: 10px;
+  color: #ddd;
 }

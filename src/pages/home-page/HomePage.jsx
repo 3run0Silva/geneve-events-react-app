@@ -1,23 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import data from './data/static-data.json'; 
-import './HomePage.css'
+import data from '../home-page/data/static-data.json';
+import { useNavigate } from 'react-router-dom';
+import './HomePage.css';
+import { fetchEvents } from '../../services/api/api';
 
 const HomePage = () => {
   const [events, setEvents] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setEvents(data.categories);
   }, []);
+
+  const handleCardClick = async (apiTag, displayTag) => {
+    if (apiTag === 'all') {
+      try {
+        const allEvents = await fetchEvents();
+        if (allEvents.length === 0) {
+          alert('There are currently no events available. Please try again later.');
+        } else {
+          navigate(`/category/${apiTag}`, { state: { events: allEvents, displayTag } });
+        }
+      } catch (error) {
+        console.error('Failed to fetch all events:', error);
+      }
+    } else {
+      navigate(`/category/${apiTag}`, { state: { displayTag } });
+    }
+  };
 
   return (
     <>
       <h1 className='home-title'>Categories</h1>
       <div className="event-cards">
         {events.map((event, index) => (
-          <div key={index} className="event-card">
-            <img className='event-img' src={event.img} alt={event.tag} />
+          <div key={index} className="event-card" onClick={() => handleCardClick(event.apiTag, event.displayTag)}>
+            <img className='event-img' src={event.img} alt={event.displayTag} />
             <div className="corner-tag" style={{ background: event.cornerColor }}></div>
-            <h2 style={{ color: getColorFromGradient(event.cornerColor) }}>{event.tag}</h2>
+            <h2 style={{ color: getColorFromGradient(event.cornerColor) }}>{event.displayTag}</h2>
           </div>
         ))}
       </div>
@@ -32,4 +52,3 @@ const getColorFromGradient = (gradient) => {
 };
 
 export default HomePage;
-

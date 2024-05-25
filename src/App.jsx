@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import HomePage from './pages/home-page/HomePage';
-// import EventCard from './components/event-card/EventCard';
-import './App.css'
-
+import CategoryPage from './pages/category-page/CategoryPage';
+import './App.css';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -19,14 +19,19 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Navbar isLoggedIn={!!user} user={user} onLogin={handleLogin} onLogout={handleLogout} />
-      <div className="content">
-        <HomePage />
-        {/* <EventCard /> */}
+    <Router>
+      <div className="App">
+        <Navbar isLoggedIn={!!user} user={user} onLogin={handleLogin} onLogout={handleLogout} />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/category/:tag" element={<CategoryPage />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
 export default App;
+

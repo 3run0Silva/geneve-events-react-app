@@ -2,70 +2,83 @@
   "categories": [
     {
       "img": "https://t4.ftcdn.net/jpg/02/34/82/37/360_F_234823764_WqhUuzaMVP7Ph7qq6HvePi7LSRCEaYEx.jpg",
-      "tag": "All events",
+      "displayTag": "All Events",
+      "apiTag": "Events",
       "cornerColor": "linear-gradient(to right, #91F1EF, #FFD5E0)"
     },
     {
       "img": "https://images5.alphacoders.com/133/1331568.png",
-      "tag": "Theatre",
+      "displayTag": "Theatre",
+      "apiTag": "Theatre",
       "cornerColor": "linear-gradient(to right, #FFEC00, #FF0000)"
     },
     {
       "img": "https://img.freepik.com/free-photo/dancing-visual-ai-generated_268835-7339.jpg?w=1380&t=st=1716631425~exp=1716632025~hmac=74cc3f0de57728c4b24b985f329c20426dc41e018798c84faff5d08e1da6b05a",
-      "tag": "Dance",
+      "displayTag": "Dance",
+      "apiTag": "Dance",
       "cornerColor": "linear-gradient(to right, #FF00FF, #FF4500)"
     },
     {
       "img": "https://imageio.forbes.com/specials-images/imageserve/628c06f838d3f4bcb05ca2cd/2017-Coachella-Valley-Music-And-Arts-Festival---Weekend-2---Day-3/960x0.jpg?format=jpg&width=1440",
-      "tag": "Concert",
+      "displayTag": "Concert",
+      "apiTag": "Concert",
       "cornerColor": "linear-gradient(to right, #00FF00, #0000FF)"
     },
     {
       "img": "https://codaaudio.com/wp-content/uploads/2018/01/Open-Air-Festival-55323994-900.jpg",
-      "tag": "Gratuit",
+      "displayTag": "Gratuit",
+      "apiTag": "100%_gratuit_-_En_plein_air",
       "cornerColor": "linear-gradient(to right, #FFA500, #800080)"
     },
     {
       "img": "https://c4.wallpaperflare.com/wallpaper/443/369/179/bar-club-dance-dancing-wallpaper-preview.jpg",
-      "tag": "Clubbing",
-      "cornerColor": "linear-gradient(to right, #DA3068  , #14469F)"
+      "displayTag": "Clubbing",
+      "apiTag": "Clubbing",
+      "cornerColor": "linear-gradient(to right, #DA3068, #14469F)"
     },
     {
       "img": "https://cdn.concreteplayground.com/content/uploads/2020/07/EventCinemas-supplied-2880x1620.jpg",
-      "tag": "Screening",
+      "displayTag": "Screening",
+      "apiTag": "Screening",
       "cornerColor": "linear-gradient(to right, #C10214, #301847)"
     },
     {
       "img": "https://f.hellowork.com/edito/sites/5/2017/02/AdobeStock_122968131.jpeg",
-      "tag": "Workshop",
+      "displayTag": "Workshop",
+      "apiTag": "Workshop",
       "cornerColor": "linear-gradient(to right, #FCFB62, #91F9E5)"
     },
     {
       "img": "https://www.bosshunting.com.au/wp-content/uploads/2021/01/Monet-and-Friends_Cezanne_01_supplied-1200x675.jpg",
-      "tag": "Exhibition",
+      "displayTag": "Exhibition",
+      "apiTag": "Exhibition",
       "cornerColor": "linear-gradient(to right, #00C1D0, #0A0F44)"
     },
     {
       "img": "https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,q_75,w_1200/v1/crm/charleston/1-strolls_dbd6229c-5056-a36a-0625555b7feb862c.jpg",
-      "tag": "Excursion",
+      "displayTag": "Excursion",
+      "apiTag": "Guided_visit",
       "cornerColor": "linear-gradient(to right, #23CD6B, #272D2D)"
     },
     {
       "img": "https://img.freepik.com/free-photo/sports-tools_53876-138077.jpg?w=1380&t=st=1716635658~exp=1716636258~hmac=f73f1cd90bc1e4a56d4c837cbcd2d54b25b58598e290745d3e1b8f8b68e33d03",
-      "tag": "Sports",
+      "displayTag": "Sports",
+      "apiTag": "Sports",
       "cornerColor": "linear-gradient(to right, #23CD6B, #272D2D)"
     },
     {
       "img": "https://images.seattleschild.com/wp-content/uploads/2020/05/readinparkSTOCK.jpg",
-      "tag": "Reading",
+      "displayTag": "Reading",
+      "apiTag": "Reading",
       "cornerColor": "linear-gradient(to right, #DB2763, #B0DB43)"
     },
     {
       "img": "https://hire4event.com/blogs/wp-content/uploads/2020/01/Conference.jpg",
-      "tag": "Conference",
+      "displayTag": "Conference",
+      "apiTag": "Conference_-_Meeting",
       "cornerColor": "linear-gradient(to right, #fdbb2d, #b21f1f, #1a2a6c )"
     }
-    
   ]
 }
+
 
