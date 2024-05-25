@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { fetchEvents } from '../../services/api/api'; // Adjust the path according to your project structure
-import './EventCard.css'; // Assuming you create a CSS file for the EventCard component styles
+import { fetchEvents } from '../../services/api/api';
+import './EventCard.css'; 
 
 const EventCard = () => {
   const [events, setEvents] = useState([]);
