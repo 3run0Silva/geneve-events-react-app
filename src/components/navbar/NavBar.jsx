@@ -1,12 +1,14 @@
+// src/components/navbar/Navbar.jsx
+
 import React from 'react';
 import DropdownMenu from '../dropdown/DropdownMenu';
 import './Navbar.css';
 
-const Navbar = ({ isLoggedIn, user, onLogin, onLogout }) => {
+const Navbar = () => {
   return (
     <nav className="navbar">
       <h1>GEE</h1>
-      <DropdownMenu isLoggedIn={isLoggedIn} user={user} onLogin={onLogin} onLogout={onLogout} />
+      <DropdownMenu />
     </nav>
   );
 };

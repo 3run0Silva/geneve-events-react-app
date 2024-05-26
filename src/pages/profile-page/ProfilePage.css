@@ -1,0 +1,16 @@
+
+.profile-page {
+  text-align: center;
+  padding: 20px;
+}
+
+.profile-page h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}

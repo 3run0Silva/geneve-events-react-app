@@ -60,3 +60,10 @@
   background: #444;
 }
 
+.dropdown-content button:disabled {
+  background: #ddd;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+
