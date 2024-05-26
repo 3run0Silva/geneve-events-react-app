@@ -24,7 +24,7 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background: linear-gradient(to right,#a0a0a0, #494949);
+  background: linear-gradient(to right, #a0a0a0, #494949);
   min-width: 160px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;

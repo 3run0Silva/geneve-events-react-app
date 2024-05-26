@@ -1,5 +1,5 @@
 import React from 'react';
-import DropdownMenu from '../doprdown/DropdownMenu';
+import DropdownMenu from '../dropdown/DropdownMenu';
 import './Navbar.css';
 
 const Navbar = ({ isLoggedIn, user, onLogin, onLogout }) => {
