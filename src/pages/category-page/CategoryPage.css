@@ -17,12 +17,12 @@
 
 .event-cards {
   display: grid;
-  grid-template-columns: repeat(5, 220px); /* Set exactly 5 columns with fixed width */
-  gap: 70px; /* Space between cards */
+  grid-template-columns: repeat(5, 220px); 
+  gap: 70px; 
   justify-content: center;
   padding: 20px;
-  background: transparent; /* Remove background */
-  margin: 0 auto; /* Center the grid */
+  background: transparent; 
+  margin: 0 auto; 
 }
 
 .event-card {
@@ -31,10 +31,10 @@
   border: 1px solid #444;
   border-radius: 8px;
   overflow: hidden;
-  width: 220px; /* Fixed width to maintain shape */
-  height: 320px; /* Fixed height to maintain shape */
+  width: 220px; 
+  height: 320px; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  color: var(--corner-color); /* Use the CSS variable for initial text color */
+  color: var(--corner-color); 
   transition: all 0.3s ease;
 }
 
@@ -60,16 +60,16 @@
   text-align: center;
   width: 100%;
   z-index: 1;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 1.5); /* More pronounced shadow */
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  padding: 5px; /* Padding for the background */
-  border-radius: 5px; /* Rounded corners for the background */
-  color: inherit; /* Use inherited color */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 1.5); 
+  background: rgba(0, 0, 0, 0.5); 
+  padding: 5px; 
+  border-radius: 5px; 
+  color: inherit; 
 }
 
 .event-card:hover h2 {
-  color: #fff; /* White text on hover */
-  background: rgba(0, 0, 0, 0.5); /* Keep the background semi-transparent */
+  color: #fff; 
+  background: rgba(0, 0, 0, 0.5); 
 }
 
 .corner-tag {
@@ -78,7 +78,7 @@
   right: 0;
   width: 40px;
   height: 40px;
-  background: inherit; /* Use the inherited color from inline style */
+  background: inherit; 
   clip-path: polygon(100% 0, 0 100%, 100% 100%);
   transition: all 0.3s ease;
 }
@@ -87,7 +87,7 @@
   width: 100%;
   height: 100%;
   clip-path: none;
-  opacity: 0.5; /* Adjust this value to control the translucency */
+  opacity: 0.5; 
 }
 
 .event-date,

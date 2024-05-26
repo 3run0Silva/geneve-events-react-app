@@ -59,59 +59,60 @@ const AuthModal = ({ user, type, onClose, onLogin, onPasswordSubmit, onExistingA
   };
 
   return (
-    <div className="auth-modal">
-      <div className="auth-modal-content">
-        {type === 'password' && (
-          <>
-            <h2>Enter Your Password</h2>
-            <input 
-              type="password" 
-              placeholder="Password" 
-              value={password}
-              onChange={(e) => setPassword(e.target.value)} 
-            />
-            {error && <p className="error">{error}</p>}
-            <button onClick={handlePasswordSubmit}>Submit</button>
-            <button onClick={onClose}>Cancel</button>
-          </>
-        )}
-        {type === 'signUp' && (
-          <>
-            <h2>Complete Your Sign-Up</h2>
-            <p>Email: {user.email}</p>
-            <p>Display Name: {user.displayName}</p>
-            <input 
-              type="password" 
-              placeholder="Set a Password" 
-              value={password}
-              onChange={(e) => setPassword(e.target.value)} 
-            />
-            {error && <p className="error">{error}</p>}
-            <button onClick={handleSignUp}>Create Account</button>
-            <button onClick={onClose}>Cancel</button>
-          </>
-        )}
-        {type === 'nonExistent' && (
-          <>
-            <h2>Account Does Not Exist</h2>
-            <p>This account does not exist. Would you like to create a new account?</p>
-            <button onClick={() => onLogin(user, 'signUp')}>Register</button>
-            <button onClick={onClose}>Cancel</button>
-          </>
-        )}
-        {type === 'existingAccount' && (
-          <>
-            <h2>Account Already Exists</h2>
-            <p>This account already exists. Would you like to log in instead?</p>
-            <button onClick={handleExistingAccount}>Log In</button>
-            <button onClick={onClose}>Cancel</button>
-          </>
-        )}
+    <>
+      <div className="auth-modal-overlay"></div>
+      <div className="auth-modal">
+        <div className="auth-modal-content">
+          {type === 'password' && (
+            <>
+              <h2>Enter Your Password</h2>
+              <input 
+                type="password" 
+                placeholder="Password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} 
+              />
+              {error && <p className="error">{error}</p>}
+              <button onClick={handlePasswordSubmit}>Submit</button>
+              <button onClick={onClose}>Cancel</button>
+            </>
+          )}
+          {type === 'signUp' && (
+            <>
+              <h2>Complete Your Sign-Up</h2>
+              <p>Email: {user.email}</p>
+              <p>Display Name: {user.displayName}</p>
+              <input 
+                type="password" 
+                placeholder="Set a Password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} 
+              />
+              {error && <p className="error">{error}</p>}
+              <button onClick={handleSignUp}>Create Account</button>
+              <button onClick={onClose}>Cancel</button>
+            </>
+          )}
+          {type === 'nonExistent' && (
+            <>
+              <h2>Account Does Not Exist</h2>
+              <p>This account does not exist. Would you like to create a new account?</p>
+              <button onClick={() => onLogin(user, 'signUp')}>Register</button>
+              <button onClick={onClose}>Cancel</button>
+            </>
+          )}
+          {type === 'existingAccount' && (
+            <>
+              <h2>Account Already Exists</h2>
+              <p>This account already exists. Would you like to log in instead?</p>
+              <button onClick={handleExistingAccount}>Log In</button>
+              <button onClick={onClose}>Cancel</button>
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
 export default AuthModal;
-
-

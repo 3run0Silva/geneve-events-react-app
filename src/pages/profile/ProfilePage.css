@@ -1,0 +1,34 @@
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: #f5f5f5;
+  height: 100vh;
+}
+
+.profile-avatar {
+  margin-right: 20px;
+}
+
+.profile-avatar img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-details {
+  max-width: 600px;
+}
+
+.profile-details h1 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+}
+
+.profile-details p {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}

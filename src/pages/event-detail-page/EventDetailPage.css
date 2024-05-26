@@ -16,8 +16,8 @@
   bottom: 0;
   background-size: cover;
   background-position: center;
-  filter: blur(8px); /* Apply blur effect */
-  z-index: -2; /* Ensure it is behind the main content and vignette */
+  filter: blur(8px);
+  z-index: -2;
 }
 
 .event-detail-container::after {
@@ -28,7 +28,7 @@
   right: 0;
   bottom: 0;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
-  z-index: -1; /* Ensure it is behind the main content but above the blur */
+  z-index: -1;
 }
 
 .event-detail-info {
