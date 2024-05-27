@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import EventDetailPage from './EventDetailPage';
+import EventDetailPage from '../EventDetailPage';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { NotificationProvider } from '../../context/NotificationContext';
+import { NotificationProvider } from '../../../context/NotificationContext';
 
 global.fetch = jest.fn(() =>
   Promise.resolve({

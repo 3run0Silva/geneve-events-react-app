@@ -28,7 +28,7 @@
   min-width: 160px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 100;
-  right: 0;
+  left: -35px; 
   border-radius: 8px;
   overflow: hidden;
 }
@@ -44,7 +44,7 @@
 }
 
 .dropdown-content.persist {
-  display: block !important; /* Ensures the content stays visible */
+  display: block !important; 
 }
 
 .dropdown-content button {
@@ -69,5 +69,3 @@
   color: #aaa;
   cursor: not-allowed;
 }
-
-

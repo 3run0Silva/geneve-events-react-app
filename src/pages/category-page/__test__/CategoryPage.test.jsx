@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import CategoryPage from './CategoryPage';
+import CategoryPage from '../CategoryPage';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { NotificationProvider } from '../../context/NotificationContext';
-import * as api from '../../services/api/api';
+import { NotificationProvider } from '../../../context/NotificationContext';
+import * as api from '../../../services/api/api';
 
 global.fetch = jest.fn(() =>
   Promise.resolve({

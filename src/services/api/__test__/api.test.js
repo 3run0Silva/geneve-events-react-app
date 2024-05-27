@@ -1,4 +1,4 @@
-import { fetchEvents, fetchEventsByTag, fetchEventsByDate } from './api';
+import { fetchEvents, fetchEventsByTag, fetchEventsByDate } from '../api';
 
 global.fetch = jest.fn(() =>
   Promise.resolve({

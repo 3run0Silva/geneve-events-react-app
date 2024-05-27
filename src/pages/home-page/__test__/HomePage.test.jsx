@@ -1,8 +1,8 @@
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import HomePage from './HomePage';
+import HomePage from '../HomePage';
 import { MemoryRouter } from 'react-router-dom';
 import React from 'react';
-import { NotificationProvider } from '../../context/NotificationContext';
+import { NotificationProvider } from '../../../context/NotificationContext';
 
 test('displays error message when failing to fetch all events', async () => {
   render(

@@ -9,7 +9,7 @@ import './DropdownMenu.css';
 const DropdownMenu = () => {
   const { user, login, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-  const [isPersisting, setIsPersisting] = useState(false); // New state variable
+  const [isPersisting, setIsPersisting] = useState(false); 
   const { showNotification } = useNotification();
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,7 +24,7 @@ const DropdownMenu = () => {
   const handleLogout = () => {
     logout();
     setIsOpen(false);
-    setIsPersisting(false); // Reset persisting state
+    setIsPersisting(false); 
     if (location.pathname === '/profile') {
       navigate('/');
     }
@@ -35,14 +35,14 @@ const DropdownMenu = () => {
   const handleClickOutside = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setIsOpen(false);
-      setIsPersisting(false); // Reset persisting state
+      setIsPersisting(false); 
     }
   };
 
   // Close dropdown menu when Google Auth popup appears
   const handleAuthInitiate = () => {
     setIsOpen(false);
-    setIsPersisting(true); // Set persisting state to keep the dropdown visible
+    setIsPersisting(true);
   };
 
   useEffect(() => {
@@ -61,14 +61,14 @@ const DropdownMenu = () => {
   const handleProfileClick = () => {
     navigate('/profile');
     setIsOpen(false);
-    setIsPersisting(false); // Reset persisting state
+    setIsPersisting(false);
   };
 
   // Function to navigate to the home page
   const handleHomeClick = () => {
     navigate('/');
     setIsOpen(false);
-    setIsPersisting(false); // Reset persisting state
+    setIsPersisting(false);
   };
 
   return (
@@ -99,12 +99,12 @@ const DropdownMenu = () => {
             <LoginBtn onLogin={(user) => {
               login(user);
               setIsOpen(false);
-              setIsPersisting(false); // Reset persisting state
+              setIsPersisting(false); 
             }} onAuthInitiate={handleAuthInitiate} />
             <SignUpBtn onRegister={(user) => {
               login(user);
               setIsOpen(false);
-              setIsPersisting(false); // Reset persisting state
+              setIsPersisting(false); 
             }} onAuthInitiate={handleAuthInitiate} />
           </>
         )}
