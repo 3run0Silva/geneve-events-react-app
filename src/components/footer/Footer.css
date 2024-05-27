@@ -4,12 +4,15 @@
   justify-content: space-between;
   padding: 40px 60px;
   color: white;
-  background-color: black;
+  background-color: rgb(28, 29, 42);
   height: 30vh;
 }
 
 a {
   text-decoration: none;
+  background: linear-gradient(to right, #FAFF00, #ff0000);
+  background-clip: text;
+  color: transparent;
 }
 
 .footer-main-div {
