@@ -9,7 +9,9 @@ const EventCard = ({ tag, cornerColor, handleCardClick }) => {
   const [error, setError] = useState(null);
   const { showNotification } = useNotification();
 
+  
   useEffect(() => {
+    // Function to load events by tag
     const loadEvents = async () => {
       try {
         const data = await fetchEventsByTag(tag);

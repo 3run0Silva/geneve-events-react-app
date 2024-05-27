@@ -2,7 +2,7 @@ import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import DropdownMenu from './DropdownMenu';
 import { MemoryRouter } from 'react-router-dom';
 import React from 'react';
-import { AuthProvider } from '../../context/AuthContext';
+import { AuthProvider } from '../../../context/AuthContext';
 
 test('displays error message on Google sign-in failure', async () => {
   render(

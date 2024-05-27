@@ -1,5 +1,10 @@
-import './Footer.css'
+import React from 'react';
+import { useAuth } from '../../context/AuthContext'; 
+import './Footer.css';
+
 const Footer = () => {
+  const { user } = useAuth(); 
+
   return (
     <>
       <footer className="footer">
@@ -8,7 +13,11 @@ const Footer = () => {
             <h3>GEE</h3>
             <div className='gee-content content-padding content-direction'>
               <a href="http://localhost:5173/category/Events" className='content-element-margin'>All Events</a>
-              <p className='content-element-margin'>Profile</p>
+              {user && (
+                <a href={`http://localhost:5173/profile/${user.uid}`} className='content-element-margin'>
+                  Profile
+                </a>
+              )}
             </div>
           </div>
           <div className='about'>
@@ -22,7 +31,6 @@ const Footer = () => {
             <div className='contact-content content-padding content-direction'>
               <p className='content-element-margin'>Tel: <a href="tel:078 403 16 10">078 403 16 10</a></p>
               <p className='content-element-margin'>Email: <a href="mailto: bruno@bsilva.ch">bruno@bsilva.ch</a> </p>
-              
             </div>   
           </div>
         </div>
@@ -31,7 +39,7 @@ const Footer = () => {
         </div>
       </footer>
     </>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

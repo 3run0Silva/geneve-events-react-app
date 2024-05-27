@@ -1,5 +1,5 @@
 import React from 'react';
-import DropdownMenu from '../dropdown/DropdownMenu';
+import DropdownMenu from '../authentication/dropdown/DropdownMenu';
 import './Navbar.css';
 
 const Navbar = () => {

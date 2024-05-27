@@ -27,7 +27,7 @@
   background: linear-gradient(to right, #a0a0a0, #494949);
   min-width: 160px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 100;
   right: 0;
   border-radius: 8px;
   overflow: hidden;
@@ -41,6 +41,10 @@
 
 .dropdown-content.show {
   display: block;
+}
+
+.dropdown-content.persist {
+  display: block !important; /* Ensures the content stays visible */
 }
 
 .dropdown-content button {
