@@ -1,5 +1,3 @@
-// src/components/navbar/Navbar.jsx
-
 import React from 'react';
 import DropdownMenu from '../dropdown/DropdownMenu';
 import './Navbar.css';

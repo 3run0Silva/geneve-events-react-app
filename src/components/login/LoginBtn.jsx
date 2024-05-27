@@ -3,11 +3,13 @@ import { signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '../../services/database/firebase';
 import { getDatabase, ref, get } from 'firebase/database';
 import AuthModal from '../auth-modal/AuthModal';
+import { useNotification } from '../../context/NotificationContext';
 
 const LoginBtn = ({ onLogin }) => {
   const [modalType, setModalType] = useState(null);
   const [user, setUser] = useState(null);
   const [authError, setAuthError] = useState('');
+  const { showNotification } = useNotification();
 
   const handleLogin = async () => {
     try {
@@ -15,7 +17,6 @@ const LoginBtn = ({ onLogin }) => {
       const user = result.user;
       setUser(user);
 
-      // Check if user exists in the database
       const db = getDatabase();
       const userRef = ref(db, 'users/' + user.uid);
       const userSnapshot = await get(userRef);
@@ -26,10 +27,12 @@ const LoginBtn = ({ onLogin }) => {
       } else {
         setAuthError('Account does not exist. Please sign up.');
         setModalType('nonExistent');
+        showNotification('Account does not exist. Please sign up.', 'error');
       }
     } catch (error) {
       console.error('Error during sign-in with Google:', error);
       setAuthError('Authentication failed. Please try again.');
+      showNotification('Authentication failed. Please try again.', 'error');
     }
   };
 

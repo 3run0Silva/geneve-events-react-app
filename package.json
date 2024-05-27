@@ -14,7 +14,10 @@
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     },
-    "testEnvironment": "jest-environment-jsdom"
+    "testEnvironment": "jest-environment-jsdom",
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

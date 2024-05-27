@@ -1,19 +1,17 @@
 // const API_URL = 'https://geneva-events-api.onrender.com';
-const API_URL = 'http://192.168.10.30:8080'
+const API_URL = 'http://192.168.1.15:8080'
 
 // Fetch all events
 const fetchEvents = async () => {
   try {
-    console.log(`Fetching from ${API_URL}/events`);
     const response = await fetch(`${API_URL}/events`);
-    console.log('Response status:', response.status);
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error(`Error fetching events: ${response.statusText}`);
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('There was a problem with fetch operation:', error);
+    console.error('Fetching events failed:', error);
     throw error;
   }
 };
@@ -21,16 +19,14 @@ const fetchEvents = async () => {
 // Fetch events by tag
 const fetchEventsByTag = async (tag) => {
   try {
-    console.log(`Fetching from ${API_URL}/events/tag/${tag}`);
     const response = await fetch(`${API_URL}/events/tag/${tag}`);
-    console.log('Response status:', response.status);
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error(`Error fetching events by tag: ${response.statusText}`);
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('There was a problem with fetch operation:', error);
+    console.error('Fetching events by TAG failed:', error);
     throw error;
   }
 };
@@ -38,16 +34,14 @@ const fetchEventsByTag = async (tag) => {
 // Fetch events by date
 const fetchEventsByDate = async (day, month, year) => {
   try {
-    console.log(`Fetching from ${API_URL}/events/date?day=${day}&month=${month}&year=${year}`);
     const response = await fetch(`${API_URL}/events/date?day=${day}&month=${month}&year=${year}`);
-    console.log('Response status:', response.status);
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error(`Error fetching events by date: ${response.statusText}`);
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('There was a problem with fetch operation:', error);
+    console.error('Fetching events by DATE failed:', error);
     throw error;
   }
 };

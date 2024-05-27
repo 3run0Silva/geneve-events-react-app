@@ -1,11 +1,14 @@
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { useNotification } from '../../context/NotificationContext';
 import './ProfilePage.css';
 
 const ProfilePage = () => {
   const { user } = useAuth();
+  const { showNotification } = useNotification();
 
   if (!user) {
+    showNotification('Please log in to view your profile.', 'error');
     return <div>Please log in to view your profile.</div>;
   }
 
@@ -18,4 +21,3 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
-

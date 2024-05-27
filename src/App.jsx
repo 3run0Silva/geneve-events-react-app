@@ -7,25 +7,32 @@ import EventDetailPage from './pages/event-detail-page/EventDetailPage';
 import ProfilePage from './pages/profile-page/ProfilePage';
 import Footer from './components/footer/Footer';
 import { AuthProvider } from './context/AuthContext';
+import { NotificationProvider } from './context/NotificationContext';
+import ErrorBoundary from './components/error-handle/ErrorBoundary';
 import './App.css';
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <div className="App">
-          <Navbar />
-          <div className="content">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/category/:tag" element={<CategoryPage />} />
-              <Route path="/event/:eventId" element={<EventDetailPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-            </Routes> 
+      <NotificationProvider>
+        <Router>
+          <div className="App">
+            <ErrorBoundary>
+              <Navbar />
+              <div className="content">
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/category/:tag" element={<CategoryPage />} />
+                  <Route path="/event/:eventId" element={<EventDetailPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                </Routes> 
+              </div>
+              <Footer />
+            </ErrorBoundary>
           </div>
-         <Footer />
-        </div>
-      </Router>
+        </Router>
+      </NotificationProvider>
+
     </AuthProvider>
   );
 }

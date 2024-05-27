@@ -5,6 +5,7 @@ import { auth, googleProvider } from '../../services/database/firebase';
 import AuthModal from '../auth-modal/AuthModal';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { useNotification } from '../../context/NotificationContext';
 import './DropdownMenu.css';
 
 const DropdownMenu = () => {
@@ -13,6 +14,7 @@ const DropdownMenu = () => {
   const [modalData, setModalData] = useState(null);
   const [alertMessage, setAlertMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const { showNotification } = useNotification();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -88,6 +90,7 @@ const DropdownMenu = () => {
           confirmText: 'Ok',
           cancelText: 'Cancel'
         });
+        showNotification('Google sign-in error. Please try again.', 'error');
       }
     } finally {
       setIsLoading(false);

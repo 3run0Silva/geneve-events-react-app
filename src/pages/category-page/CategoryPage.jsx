@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { fetchEventsByTag } from '../../services/api/api';
+import { useNotification } from '../../context/NotificationContext';
 import './CategoryPage.css';
 
 const CategoryPage = () => {
@@ -8,6 +9,9 @@ const CategoryPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { showNotification } = useNotification();
   const displayTag = location.state?.displayTag || tag;
   const cornerColor = location.state?.cornerColor || 'rgba(255, 0, 0, 0.5)';
 
@@ -21,16 +25,33 @@ const CategoryPage = () => {
           setEvents(eventsData);
         } catch (error) {
           console.error('Failed to fetch events:', error);
+          setError('Failed to load events. Please try again later.');
+          showNotification('Failed to load events. Please try again later.', 'error');
+        } finally {
+          setLoading(false);
         }
       }
     };
 
     getEvents();
-  }, [tag, location.state]);
+  }, [tag, location.state, showNotification]);
 
   const handleCardClick = (event) => {
     navigate(`/event/${event.id}`, { state: { event } });
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className="error-message">
+        {error}
+        <button onClick={() => window.location.reload()}>Retry</button>
+      </div>
+    );
+  }
 
   return (
     <>

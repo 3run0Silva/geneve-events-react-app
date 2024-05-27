@@ -3,31 +3,54 @@ import data from '../home-page/data/static-data.json';
 import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
 import { fetchEvents } from '../../services/api/api';
+import { useNotification } from '../../context/NotificationContext';
 
 const HomePage = () => {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { showNotification } = useNotification();
   const navigate = useNavigate();
 
   useEffect(() => {
     setEvents(data.categories);
+    setLoading(false);
   }, []);
 
   const handleCardClick = async (apiTag, displayTag, cornerColor) => {
     if (apiTag === 'all') {
+      setLoading(true);
       try {
         const allEvents = await fetchEvents();
         if (allEvents.length === 0) {
-          alert('There are currently no events available. Please try again later.');
+          showNotification('There are currently no events available. Please try again later.', 'error');
         } else {
           navigate(`/category/${apiTag}`, { state: { events: allEvents, displayTag, cornerColor } });
         }
       } catch (error) {
         console.error('Failed to fetch all events:', error);
+        setError('Failed to load events. Please try again later.');
+        showNotification('Failed to load events. Please try again later.', 'error');
+      } finally {
+        setLoading(false);
       }
     } else {
       navigate(`/category/${apiTag}`, { state: { displayTag, cornerColor } });
     }
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className="error-message">
+        {error}
+        <button onClick={() => window.location.reload()}>Retry</button>
+      </div>
+    );
+  }
 
   return (
     <>
