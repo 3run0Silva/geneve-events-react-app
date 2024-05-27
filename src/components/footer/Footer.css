@@ -2,7 +2,6 @@
   display:flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 150px;
   padding: 40px 60px;
   color: white;
   background-color: black;
@@ -23,6 +22,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 60px
 }
 
 .content-padding {
