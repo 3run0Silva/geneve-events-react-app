@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+
+// Firebase imports
 import { signInWithPopup } from 'firebase/auth';
 import { getDatabase, ref, get, set } from 'firebase/database';
 import { auth, googleProvider } from '../../services/database/firebase';
+
+// Components imports
 import AuthModal from '../auth-modal/AuthModal';
-import { useNavigate, useLocation } from 'react-router-dom';
+
+// Context imports
 import { useAuth } from '../../context/AuthContext';
 import { useNotification } from '../../context/NotificationContext';
+
+// CSS imports
 import './DropdownMenu.css';
 
 const DropdownMenu = () => {
@@ -18,10 +26,12 @@ const DropdownMenu = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Dropdown menu toggle
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
+  
+  // Google Auth SignIn
   const handleGoogleSignIn = async (isRegistering = false) => {
     setIsOpen(false);
     setIsLoading(true);
@@ -97,6 +107,7 @@ const DropdownMenu = () => {
     }
   };
 
+  // Function to handle user logout
   const handleLogout = () => {
     logout();
     setIsOpen(false);
@@ -105,25 +116,30 @@ const DropdownMenu = () => {
     }
   };
 
+  // Function to close the modal
   const closeModal = () => {
     setModalData(null);
   };
 
+  // Function to close the alert message
   const closeAlert = () => {
     setAlertMessage('');
   };
 
+  // Function to handle clicks outside the alert
   const handleOutsideClick = (e) => {
     if (!e.target.closest('.alert')) {
       closeAlert();
     }
   };
 
+  // Function to navigate to the profile page
   const handleProfileClick = () => {
     navigate('/profile');
     setIsOpen(false);
   };
 
+  // Function to navigate to the home page
   const handleHomeClick = () => {
     navigate('/');
     setIsOpen(false);

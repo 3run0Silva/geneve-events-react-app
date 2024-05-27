@@ -2,6 +2,7 @@ import React from 'react';
 import './AuthModal.css';
 
 const AuthModal = ({ message, onConfirm, onCancel, confirmText, cancelText }) => {
+  
   return (
     <>
       <div className="auth-modal-overlay" onClick={onCancel}></div>

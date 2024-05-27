@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { fetchEvents } from '../../services/api/api';
+import { fetchEventsByTag } from '../../services/api/api';
 import { useNotification } from '../../context/NotificationContext';
 import './EventCard.css'; 
 
-const EventCard = () => {
+const EventCard = ({ tag, cornerColor, handleCardClick }) => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +12,7 @@ const EventCard = () => {
   useEffect(() => {
     const loadEvents = async () => {
       try {
-        const data = await fetchEvents();
+        const data = await fetchEventsByTag(tag);
         setEvents(data);
       } catch (error) {
         setError('Failed to load events. Please try again later.');
@@ -23,7 +23,7 @@ const EventCard = () => {
     };
 
     loadEvents();
-  }, [showNotification]);
+  }, [tag, showNotification]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -39,21 +39,34 @@ const EventCard = () => {
   }
 
   return (
-    <div className="event-cards">
-      {events.map((event) => (
-        <div key={event.id} className="event-card">
-          <img className='event-img' src={event.img} alt="" />
-          <div>
-            <h2>{event.name}</h2>
-            <p className="event-date">{event.date}</p>
-            <p className="event-location">{event.location}</p>
-            <p className="event-description">{event.description}</p>
-              {console.log(event)}
-          </div>
+    <>
+      {events.length === 0 ? (
+        <p className="no-events-message">There are currently no events available in this category. Please try again later.</p>
+      ) : (
+        <div className="event-cards">
+          {events.map((event, index) => (
+            <div
+              key={index}
+              className="event-card"
+              style={{ '--corner-color': getColorFromGradient(cornerColor) }}
+              onClick={() => handleCardClick(event)}
+            >
+              <img className='event-img' src={event.img} alt={event.title} />
+              <div className="corner-tag" style={{ background: cornerColor }}></div>
+              <h2>{event.title}</h2>
+              <p className="event-date">{event.date}</p>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      )}
+    </>
   );
+};
+
+const getColorFromGradient = (gradient) => {
+  // Extract the first color from the gradient string
+  const colors = gradient.match(/#([0-9a-f]{6}|[0-9a-f]{3})/gi);
+  return colors ? colors[0] : '#fff';
 };
 
 export default EventCard;
