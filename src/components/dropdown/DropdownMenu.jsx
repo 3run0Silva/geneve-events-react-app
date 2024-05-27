@@ -1,11 +1,9 @@
-// src/components/dropdown/DropdownMenu.jsx
-
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { signInWithPopup } from 'firebase/auth';
 import { getDatabase, ref, get, set } from 'firebase/database';
 import { auth, googleProvider } from '../../services/database/firebase';
 import AuthModal from '../auth-modal/AuthModal';
-import { useNavigate, useLocation } from 'react-router-dom'; // Import useNavigate and useLocation
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import './DropdownMenu.css';
 

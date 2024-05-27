@@ -1,0 +1,44 @@
+.footer {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 150px;
+  padding: 40px 60px;
+  color: white;
+  background-color: black;
+  height: 30vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+.footer-main-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.gee, .about, .contact{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-padding {
+  padding: 10px;
+}
+
+.content-direction {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-element-margin {
+  margin: 5px;
+}
+
+.copyright {
+  padding-top:45px;
+}
+
