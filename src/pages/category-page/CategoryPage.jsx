@@ -17,12 +17,13 @@ const CategoryPage = () => {
   };
 
   return (
-    <>
-      <h1 className='category-title'>{displayTag} Events</h1>
-      <EventCard tag={tag} cornerColor={cornerColor} handleCardClick={handleCardClick} />
-    </>
+    <div className="category-page-container">
+      <div className="content">
+        <h1 className='category-title'>{displayTag} Events</h1>
+        <EventCard tag={tag} cornerColor={cornerColor} handleCardClick={handleCardClick} />
+      </div>
+    </div>
   );
 };
 
 export default CategoryPage;
-

@@ -14,7 +14,7 @@ export const NotificationProvider = ({ children }) => {
     setNotification({ message, type });
     setTimeout(() => {
       setNotification(null);
-    }, 3000); // Adjust the timeout duration as needed
+    }, 3000); 
   };
 
   return (

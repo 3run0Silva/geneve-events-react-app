@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchEventsByTag } from '../../services/api/api';
 import { useNotification } from '../../context/NotificationContext';
+import { useNavigate } from 'react-router-dom';
 import './EventCard.css'; 
 
 const EventCard = ({ tag, cornerColor, handleCardClick }) => {
@@ -8,8 +9,8 @@ const EventCard = ({ tag, cornerColor, handleCardClick }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { showNotification } = useNotification();
+  const navigate = useNavigate();
 
-  
   useEffect(() => {
     // Function to load events by tag
     const loadEvents = async () => {
@@ -27,15 +28,19 @@ const EventCard = ({ tag, cornerColor, handleCardClick }) => {
     loadEvents();
   }, [tag, showNotification]);
 
+  const handleBack = () => {
+    navigate(-1); // This navigates to the previous page in the history stack
+  };
+
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="loading-spinner"></div>;
   }
 
   if (error) {
     return (
       <div className="error-message">
         {error}
-        <button onClick={() => window.location.reload()}>Retry</button>
+        <button onClick={handleBack}>Go Back</button>
       </div>
     );
   }

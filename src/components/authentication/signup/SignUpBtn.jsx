@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+
+// Firebase imports
 import { signInWithPopup } from 'firebase/auth';
 import { getDatabase, ref, get, set } from 'firebase/database';
 import { auth, googleProvider } from '../../../services/database/firebase';
+
+// Context imports
 import { useNotification } from '../../../context/NotificationContext';
+
+// Component imports
 import AuthModal from '../auth-modal/AuthModal';
 
 const SignUpBtn = ({ onRegister, onAuthInitiate }) => {
@@ -14,7 +20,7 @@ const SignUpBtn = ({ onRegister, onAuthInitiate }) => {
     setIsLoading(true);
     onAuthInitiate();
     try {
-      console.log('Initiating Google Sign-Up');
+      // Google sign in
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
       const db = getDatabase();

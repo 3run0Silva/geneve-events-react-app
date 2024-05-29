@@ -1,3 +1,13 @@
+.category-page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.content {
+  flex: 1; 
+}
+
 .category-title {
   margin-top: 1em;
   margin-bottom: 1em;
