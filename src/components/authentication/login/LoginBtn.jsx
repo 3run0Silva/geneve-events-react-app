@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '../../../services/database/firebase';
-import { getDatabase, ref, get, set } from 'firebase/database';
+import { getDatabase, ref, get, set, update } from 'firebase/database';
 import AuthModal from '../auth-modal/AuthModal';
 import { useNotification } from '../../../context/NotificationContext';
 
@@ -26,8 +26,15 @@ const LoginBtn = ({ onLogin, onAuthInitiate }) => {
       const userSnapshot = await get(userRef);
 
       if (userSnapshot.exists()) {
-        console.log('User exists:', user);
-        onLogin(user);
+        const userData = userSnapshot.val();
+        console.log('User exists:', userData);
+        // Use custom displayName and photoURL if they exist, otherwise fallback to Google info
+        const updatedUser = {
+          ...user,
+          displayName: userData.displayName || user.displayName,
+          photoURL: userData.photoURL || user.photoURL,
+        };
+        onLogin(updatedUser);
         showNotification('Logged in successfully', 'success');
       } else {
         console.log('User does not exist, showing modal');
@@ -39,6 +46,8 @@ const LoginBtn = ({ onLogin, onAuthInitiate }) => {
               username: user.displayName,
               email: user.email,
               profile_picture: user.photoURL,
+              displayName: user.displayName,
+              photoURL: user.photoURL,
               loginAttempts: 0,
               accountType: 'google'
             });

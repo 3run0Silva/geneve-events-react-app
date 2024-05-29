@@ -29,7 +29,7 @@ const EventCard = ({ tag, cornerColor, handleCardClick }) => {
   }, [tag, showNotification]);
 
   const handleBack = () => {
-    navigate(-1); // This navigates to the previous page in the history stack
+    navigate(-1); 
   };
 
   if (loading) {

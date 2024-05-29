@@ -28,12 +28,18 @@ const SignUpBtn = ({ onRegister, onAuthInitiate }) => {
       const userSnapshot = await get(userRef);
 
       if (userSnapshot.exists()) {
+        const userData = userSnapshot.val();
         console.log('User already exists, showing modal');
         setModalData({
           message: 'Account already exists. Do you want to log in?',
           onConfirm: () => {
-            console.log('Logging in existing user:', user);
-            onRegister(user);
+            const updatedUser = {
+              ...user,
+              displayName: userData.displayName || user.displayName,
+              photoURL: userData.photoURL || user.photoURL,
+            };
+            console.log('Logging in existing user:', updatedUser);
+            onRegister(updatedUser);
             showNotification('Logged in successfully', 'success');
             closeModal();
           },
@@ -50,6 +56,8 @@ const SignUpBtn = ({ onRegister, onAuthInitiate }) => {
           username: user.displayName,
           email: user.email,
           profile_picture: user.photoURL,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
           loginAttempts: 0,
           accountType: 'google'
         });
