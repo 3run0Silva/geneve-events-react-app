@@ -39,7 +39,6 @@
   margin-right: 40px;
   font-size: 18px;
   display: flex;
-  align-items: flex-end;
 }
 
 .navbar .dropdown-menu button:hover {

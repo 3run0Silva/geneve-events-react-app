@@ -9,8 +9,8 @@
 }
 
 .category-title {
-  margin-top: 1em;
-  margin-bottom: 0.5em; /* Adjusted to make space for the search bar */
+  margin-top: 2.5em;
+  margin-bottom: 0.7em; 
   text-align: center;
   font-size: 4rem;
   background: linear-gradient(to right, #FFEC00 30%, #FF0000 85%);
@@ -19,7 +19,7 @@
 }
 
 .search-bar {
-  margin-bottom: 1em;
+  margin-bottom: 5em;
   text-align: center;
 }
 
@@ -76,7 +76,7 @@
 
 .event-card h2 {
   margin: 0;
-  font-size: 1.5em;
+  font-size: 1.3em;
   position: absolute;
   top: 50%;
   left: 50%;

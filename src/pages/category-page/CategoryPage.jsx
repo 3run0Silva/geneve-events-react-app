@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
-import { fetchEventsByTag } from '../../services/api/api'; // Make sure to import the API call
+import { fetchEventsByTag } from '../../services/api/api';
 import { useNotification } from '../../context/NotificationContext';
 import './CategoryPage.css';
 
