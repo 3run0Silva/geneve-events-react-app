@@ -10,12 +10,26 @@
 
 .category-title {
   margin-top: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em; /* Adjusted to make space for the search bar */
   text-align: center;
   font-size: 4rem;
   background: linear-gradient(to right, #FFEC00 30%, #FF0000 85%);
   background-clip: text;
   color: transparent;
+}
+
+.search-bar {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 80%;
+  max-width: 600px;
 }
 
 .no-events-message {
