@@ -1,10 +1,9 @@
 import React from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useNotification } from '../../context/NotificationContext';
 import './EventDetailPage.css';
 
 const EventDetailPage = () => {
-  const { eventId } = useParams();
   const location = useLocation();
   const event = location.state?.event;
   const { showNotification } = useNotification();

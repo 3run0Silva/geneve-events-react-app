@@ -1,9 +1,16 @@
+// React imports
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+
+// Context imports
 import { useAuth } from '../../../context/AuthContext';
 import { useNotification } from '../../../context/NotificationContext';
+
+// Component imports
 import LoginBtn from '../login/LoginBtn';
 import SignUpBtn from '../signup/SignUpBtn';
+
+// CSS imports
 import './DropdownMenu.css';
 
 const DropdownMenu = () => {

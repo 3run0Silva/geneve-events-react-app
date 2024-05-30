@@ -1,7 +1,11 @@
+// React imports
 import React, { useEffect, useState } from 'react';
-import { fetchEventsByTag } from '../../services/api/api';
-import { useNotification } from '../../context/NotificationContext';
 import { useNavigate } from 'react-router-dom';
+// Component imports
+import { fetchEventsByTag } from '../../services/api/api';
+// Context imports
+import { useNotification } from '../../context/NotificationContext';
+// CSS imports
 import './EventCard.css'; 
 
 const EventCard = ({ tag, cornerColor, handleCardClick }) => {
@@ -11,22 +15,22 @@ const EventCard = ({ tag, cornerColor, handleCardClick }) => {
   const { showNotification } = useNotification();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Function to load events by tag
-    const loadEvents = async () => {
-      try {
-        const data = await fetchEventsByTag(tag);
-        setEvents(data);
-      } catch (error) {
-        setError('Failed to load events. Please try again later.');
-        showNotification('Failed to load events. Please try again later.', 'error');
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   // Function to load events by tag
+  //   const loadEvents = async () => {
+  //     try {
+  //       const data = await fetchEventsByTag(tag);
+  //       setEvents(data);
+  //     } catch (error) {
+  //       setError('Failed to load events. Please try again later.');
+  //       showNotification('Failed to load events. Please try again later.', 'error');
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    loadEvents();
-  }, [tag, showNotification]);
+  //   loadEvents();
+  // }, [tag, showNotification]);
 
   const handleBack = () => {
     navigate(-1); 
@@ -71,7 +75,7 @@ const EventCard = ({ tag, cornerColor, handleCardClick }) => {
 };
 
 const getColorFromGradient = (gradient) => {
-  // Extract the first color from the gradient string
+  // Extract the first color from the gradient string (Corner color)
   const colors = gradient.match(/#([0-9a-f]{6}|[0-9a-f]{3})/gi);
   return colors ? colors[0] : '#fff';
 };

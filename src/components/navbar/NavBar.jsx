@@ -5,6 +5,7 @@ import './Navbar.css';
 const Navbar = () => {
 
   useEffect(() => {
+    // Function to add a class to the navbar when the user scrolls the page 
     const handleScroll = () => {
       const navbar = document.querySelector('.navbar');
       if (window.scrollY > 50) { 

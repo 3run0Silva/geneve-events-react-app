@@ -12,9 +12,9 @@ const Footer = () => {
           <div className='gee'>
             <h3>GEE</h3>
             <div className='gee-content content-padding content-direction'>
-              <a href="http://localhost:5173/category/Events" className='content-element-margin'>All Events</a>
+              <a href="https://gee.bsilva.ch/Events" className='content-element-margin'>All Events</a>
               {user && (
-                <a href={`http://localhost:5173/profile/${user.uid}`} className='content-element-margin'>
+                <a href={`https://gee.bsilva.ch/profile${user.uid}`} className='content-element-margin'>
                   Profile
                 </a>
               )}

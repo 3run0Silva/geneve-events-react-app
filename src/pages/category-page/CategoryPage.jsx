@@ -1,7 +1,11 @@
+// React imports
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
+// Service imports
 import { fetchEventsByTag } from '../../services/api/api';
+// Context imports
 import { useNotification } from '../../context/NotificationContext';
+// CSS imports
 import './CategoryPage.css';
 
 const CategoryPage = () => {

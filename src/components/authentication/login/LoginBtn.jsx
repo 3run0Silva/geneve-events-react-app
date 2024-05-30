@@ -1,8 +1,15 @@
+// React imports
 import React, { useState, useEffect } from 'react';
+
+// Firebase imports
 import { signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from '../../../services/database/firebase';
 import { getDatabase, ref, get, set, update } from 'firebase/database';
+
+// Component imports
 import AuthModal from '../auth-modal/AuthModal';
+
+// Coontext imports
 import { useNotification } from '../../../context/NotificationContext';
 
 const LoginBtn = ({ onLogin, onAuthInitiate }) => {
@@ -12,7 +19,7 @@ const LoginBtn = ({ onLogin, onAuthInitiate }) => {
 
   useEffect(() => {
     console.log('Modal data updated:', modalData);
-  }, [modalData]); // Log the modal data whenever it changes
+  }, [modalData]);
 
   const handleGoogleSignIn = async () => {
     setIsLoading(true);

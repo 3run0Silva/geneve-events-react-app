@@ -53,7 +53,7 @@ const ProfilePage = () => {
         photoURL,
       });
       const updatedUser = { ...user, displayName, photoURL };
-      setUser(updatedUser); // Update the user context
+      setUser(updatedUser);
       showNotification('Profile updated successfully', 'success');
       setIsEditing(false);
       closeModal();

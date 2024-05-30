@@ -1,3 +1,4 @@
+// React imports
 import React, { useState } from 'react';
 
 // Firebase imports

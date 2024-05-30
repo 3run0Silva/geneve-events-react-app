@@ -1,9 +1,14 @@
+// react imports
 import React, { useEffect, useState } from 'react';
-import data from '../home-page/data/static-data.json';
 import { useNavigate } from 'react-router-dom';
-import './HomePage.css';
+// Static data imports
+import data from '../home-page/data/static-data.json';
+// Service imports
 import { fetchEvents } from '../../services/api/api';
+// Context imports
 import { useNotification } from '../../context/NotificationContext';
+// CSS imports
+import './HomePage.css';
 
 const HomePage = () => {
   const [events, setEvents] = useState([]);
@@ -17,6 +22,7 @@ const HomePage = () => {
     setLoading(false);
   }, []);
 
+  // function to handle the "sort" by using the Tag given in the json and passing it as URL param
   const handleCardClick = async (apiTag, displayTag, cornerColor) => {
     if (apiTag === 'all') {
       setLoading(true);
