@@ -54,5 +54,6 @@ The event data is fetched from a Python API created by me, which pulls data from
 Thanks to the Geneva official website for providing the event data.
 
 Special thanks to [**Antonio Pisanello**](https://github.com/moiap13), [**Nicolas Fazio**](https://github.com/FazioNico) & **Rolf Hauri**.
+
 For more information, visit the live app at [gee.bsilva.ch](https://gee.bsilva.ch/).
 
