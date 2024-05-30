@@ -9,8 +9,8 @@ const EventDetailPage = () => {
   const { showNotification } = useNotification();
 
   if (!event) {
-    showNotification('Event not found.', 'error');
-    return <p>Event not found.</p>;
+    showNotification('Event was not found.', 'error');
+    return <p>EL'événement n'a pas été trouvé.</p>;
   }
 
   return (

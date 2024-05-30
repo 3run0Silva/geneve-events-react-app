@@ -26,7 +26,7 @@ const CategoryPage = () => {
         setEvents(data);
         setFilteredEvents(data);
       } catch (error) {
-        showNotification('Failed to load events. Please try again later.', 'error');
+        showNotification('Échec du chargement des événements. Veuillez réessayer plus tard.', 'error');
       }
     };
 
@@ -48,7 +48,7 @@ const CategoryPage = () => {
   return (
     <div className="category-page-container">
       <div className="content">
-        <h1 className="category-title">{displayTag} Events</h1>
+        <h1 className="category-title">{displayTag}</h1>
         <div className="search-bar">
           <input
             type="text"
@@ -58,7 +58,7 @@ const CategoryPage = () => {
           />
         </div>
         {filteredEvents.length === 0 ? (
-          <p className="no-events-message">There are currently no events available in this category. Please try again later.</p>
+          <p className="no-events-message">Il n'y a actuellement aucun événement correspondant à ce nom. Veuillez réessayer plus tard.</p>
         ) : (
           <div className="event-cards">
             {filteredEvents.map((event, index) => (

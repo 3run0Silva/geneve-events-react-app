@@ -1,15 +1,12 @@
 // React imports
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-
 // Context imports
 import { useAuth } from '../../../context/AuthContext';
 import { useNotification } from '../../../context/NotificationContext';
-
 // Component imports
 import LoginBtn from '../login/LoginBtn';
 import SignUpBtn from '../signup/SignUpBtn';
-
 // CSS imports
 import './DropdownMenu.css';
 
@@ -35,7 +32,7 @@ const DropdownMenu = () => {
     if (location.pathname === '/profile') {
       navigate('/');
     }
-    showNotification('Logged out successfully', 'success');
+    showNotification('Déconnecté avec succès', 'success');
   };
 
   // Function to close the dropdown menu when clicking outside
@@ -87,7 +84,7 @@ const DropdownMenu = () => {
             {user.displayName}
           </>
         ) : (
-          'Account'
+          'Connexion'
         )}
         <span style={{ marginLeft: '8px' }}>▼</span>
       </button>

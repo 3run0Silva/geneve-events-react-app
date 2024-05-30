@@ -1,14 +1,11 @@
 // React imports
 import React, { useState } from 'react';
-
 // Firebase imports
 import { signInWithPopup } from 'firebase/auth';
 import { getDatabase, ref, get, set } from 'firebase/database';
 import { auth, googleProvider } from '../../../services/database/firebase';
-
 // Context imports
 import { useNotification } from '../../../context/NotificationContext';
-
 // Component imports
 import AuthModal from '../auth-modal/AuthModal';
 
@@ -30,29 +27,29 @@ const SignUpBtn = ({ onRegister, onAuthInitiate }) => {
 
       if (userSnapshot.exists()) {
         const userData = userSnapshot.val();
-        console.log('User already exists, showing modal');
+        // console.log('User already exists, showing modal');
         setModalData({
-          message: 'Account already exists. Do you want to log in?',
+          message: 'Le compte existe déjà. Voulez-vous vous connecter?',
           onConfirm: () => {
             const updatedUser = {
               ...user,
               displayName: userData.displayName || user.displayName,
               photoURL: userData.photoURL || user.photoURL,
             };
-            console.log('Logging in existing user:', updatedUser);
+            // console.log('Logging in existing user:', updatedUser);
             onRegister(updatedUser);
-            showNotification('Logged in successfully', 'success');
+            showNotification('Connecté avec succès', 'success');
             closeModal();
           },
           onCancel: () => {
-            console.log('User canceled login');
+            // console.log('User canceled login');
             closeModal();
           },
           confirmText: 'Log In',
           cancelText: 'Cancel'
         });
       } else {
-        console.log('User does not exist, creating account');
+        // console.log('User does not exist, creating account');
         await set(userRef, {
           username: user.displayName,
           email: user.email,
@@ -63,11 +60,11 @@ const SignUpBtn = ({ onRegister, onAuthInitiate }) => {
           accountType: 'google'
         });
         onRegister(user);
-        showNotification('Your account was created successfully! Thank you for registering with us.', 'success');
+        showNotification('Votre compte a été créé avec succès! Merci de vous être inscrit chez nous', 'success');
       }
     } catch (error) {
-      console.error('Google sign-up error:', error);
-      showNotification('Google sign-up error. Please try again.', 'error');
+      // console.error('Google sign-up error:', error);
+      showNotification("Erreur d'inscription avec Google. Veuillez réessayer.", 'error');
     } finally {
       setIsLoading(false);
     }
@@ -79,7 +76,7 @@ const SignUpBtn = ({ onRegister, onAuthInitiate }) => {
 
   return (
     <>
-      <button onClick={handleGoogleSignUp} disabled={isLoading}>Register</button>
+      <button onClick={handleGoogleSignUp} disabled={isLoading}>S'inscrire</button>
       {modalData && (
         <AuthModal
           message={modalData.message}

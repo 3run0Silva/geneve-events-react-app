@@ -1,8 +1,13 @@
+// React imports
 import React, { useState } from 'react';
+// Context imports
 import { useAuth } from '../../context/AuthContext';
 import { useNotification } from '../../context/NotificationContext';
+// Firebase imports
 import { getDatabase, ref, update } from 'firebase/database';
+// Component imports
 import AuthModal from '../../components/authentication/auth-modal/AuthModal';
+// CSS imports
 import './ProfilePage.css';
 
 const ProfilePage = () => {
@@ -32,11 +37,11 @@ const ProfilePage = () => {
 
   const handleSaveClick = () => {
     setModalData({
-      message: 'Are you sure you want to save changes?',
+      message: 'Êtes-vous sûr de vouloir enregistrer les modifications ?',
       onConfirm: updateProfile,
       onCancel: closeModal,
-      confirmText: 'Save',
-      cancelText: 'Cancel',
+      confirmText: 'Sauvegarder',
+      cancelText: 'Annuler',
     });
   };
 
@@ -54,18 +59,18 @@ const ProfilePage = () => {
       });
       const updatedUser = { ...user, displayName, photoURL };
       setUser(updatedUser);
-      showNotification('Profile updated successfully', 'success');
+      showNotification('Mise à jour du profil réussie', 'success');
       setIsEditing(false);
       closeModal();
     } catch (error) {
-      console.error('Failed to update profile:', error);
-      showNotification('Failed to update profile. Please try again later.', 'error');
+      // console.error('Failed to update profile:', error);
+      showNotification('Échec de la mise à jour du profil. Veuillez réessayer plus tard', 'error');
     }
   };
 
   if (!user) {
-    showNotification('Please log in to view your profile.', 'error');
-    return <div>Please log in to view your profile.</div>;
+    showNotification('Veuillez vous connecter pour voir votre profil.', 'error');
+    return <div>Veuillez vous connecter pour voir votre profil.</div>;
   }
 
   return (
@@ -93,7 +98,7 @@ const ProfilePage = () => {
               type="text"
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
-              placeholder="New display name"
+              placeholder="Nouveau nom d'affichage"
             />
           )}
         </div>

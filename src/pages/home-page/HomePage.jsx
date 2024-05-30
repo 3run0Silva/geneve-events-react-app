@@ -29,12 +29,12 @@ const HomePage = () => {
       try {
         const allEvents = await fetchEvents();
         if (allEvents.length === 0) {
-          showNotification('There are currently no events available. Please try again later.', 'error');
+          showNotification("Il n'y a aucun evenement disponible en ce moment. Veuillez réessayer plus tard.", 'error');
         } else {
           navigate(`/category/${apiTag}`, { state: { events: allEvents, displayTag, cornerColor } });
         }
       } catch (error) {
-        console.error('Failed to fetch all events:', error);
+        // console.error('Failed to fetch all events:', error);
         setError('Failed to load events. Please try again later.');
         showNotification('Failed to load events. Please try again later.', 'error');
       } finally {
@@ -60,7 +60,7 @@ const HomePage = () => {
 
   return (
     <>
-      <h1 className='home-title'>Categories</h1>
+      <h1 className='home-title'>Catégories</h1>
       <div className="event-cards">
         {events.map((event, index) => (
           <div key={index} className="event-card" onClick={() => handleCardClick(event.apiTag, event.displayTag, event.cornerColor)}>

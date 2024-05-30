@@ -44,7 +44,7 @@ const EventCard = ({ tag, cornerColor, handleCardClick }) => {
     return (
       <div className="error-message">
         {error}
-        <button onClick={handleBack}>Go Back</button>
+        <button onClick={handleBack}>Retourner</button>
       </div>
     );
   }
@@ -52,7 +52,7 @@ const EventCard = ({ tag, cornerColor, handleCardClick }) => {
   return (
     <>
       {events.length === 0 ? (
-        <p className="no-events-message">There are currently no events available in this category. Please try again later.</p>
+        <p className="no-events-message">Il n'y a actuellement aucun événement disponible dans cette catégorie. Veuillez réessayer plus tard.</p>
       ) : (
         <div className="event-cards">
           {events.map((event, index) => (
