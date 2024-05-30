@@ -25,13 +25,13 @@ const HomePage = () => {
 
   // function to handle the "sort" by using the Tag given in the json and passing it as URL param
   const handleCardClick = async (apiTag, displayTag, cornerColor) => {
-    console.log('handleCardClick triggered'); 
+    // console.log('handleCardClick triggered'); 
     if (apiTag === 'all') {
       setLoading(true);
       try {
-        console.log('Fetching events...');
+        // console.log('Fetching events...');
         const allEvents = await fetchEvents();
-        console.log('Payload from fetchEvents:', allEvents);
+        // console.log('Payload from fetchEvents:', allEvents);
         if (allEvents.length === 0) {
           showNotification("Il n'y a aucun evenement disponible en ce moment. Veuillez réessayer plus tard.", 'error');
         } else {
@@ -40,7 +40,7 @@ const HomePage = () => {
       } catch (error) {
         // console.error('Failed to fetch all events:', error);
         setError('Failed to load events. Please try again later.');
-        showNotification('Failed to load events. Please try again later.', 'error');
+        // showNotification('Failed to load events. Please try again later.', 'error');
       } finally {
         setLoading(false);
       }
