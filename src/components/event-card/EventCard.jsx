@@ -1,40 +1,50 @@
 // React imports
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 // Component imports
-import { fetchEventsByTag } from '../../services/api/api';
+import { fetchEventsByTag, fetchEvents } from '../../services/api/api';
 // Context imports
 import { useNotification } from '../../context/NotificationContext';
 // CSS imports
 import './EventCard.css'; 
 
-const EventCard = ({ tag, cornerColor, handleCardClick }) => {
+const EventCard = ({ tag, cornerColor, handleCardClick, searchQuery }) => {
   const [events, setEvents] = useState([]);
+  const [filteredEvents, setFilteredEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { showNotification } = useNotification();
-  const navigate = useNavigate();
+  const retryLimit = 3; 
+  let retryCount = 0; 
 
-  // useEffect(() => {
-  //   // Function to load events by tag
-  //   const loadEvents = async () => {
-  //     try {
-  //       const data = await fetchEventsByTag(tag);
-  //       setEvents(data);
-  //     } catch (error) {
-  //       setError('Failed to load events. Please try again later.');
-  //       showNotification('Failed to load events. Please try again later.', 'error');
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const loadEvents = async () => {
+      try {
+        const data = tag === 'all' ? await fetchEvents() : await fetchEventsByTag(tag);
+        setEvents(data);
+        setFilteredEvents(data);
+      } catch (error) {
+        if (retryCount < retryLimit) {
+          retryCount += 1;
+          loadEvents(); 
+        } else {
+          setError('Failed to load events after multiple attempts. Please try again later.');
+          // showNotification('Failed to load events after multiple attempts. Please try again later.', 'error');
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  //   loadEvents();
-  // }, [tag, showNotification]);
+    loadEvents();
+  }, [tag, showNotification]);
 
-  const handleBack = () => {
-    navigate(-1); 
-  };
+  useEffect(() => {
+    setFilteredEvents(
+      events.filter(event =>
+        event.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+      )
+    );
+  }, [searchQuery, events]);
 
   if (loading) {
     return <div className="loading-spinner"></div>;
@@ -44,18 +54,17 @@ const EventCard = ({ tag, cornerColor, handleCardClick }) => {
     return (
       <div className="error-message">
         {error}
-        <button onClick={handleBack}>Retourner</button>
       </div>
     );
   }
 
   return (
     <>
-      {events.length === 0 ? (
+      {filteredEvents.length === 0 ? (
         <p className="no-events-message">Il n'y a actuellement aucun événement disponible dans cette catégorie. Veuillez réessayer plus tard.</p>
       ) : (
         <div className="event-cards">
-          {events.map((event, index) => (
+          {filteredEvents.map((event, index) => (
             <div
               key={index}
               className="event-card"
